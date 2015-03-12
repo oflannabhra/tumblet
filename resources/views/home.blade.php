@@ -8,10 +8,10 @@
 				<div class="panel-heading">tumblet</div>
 
 				<div class="panel-body">
-					<form>
+					<form method="post" action="tumblet/create">
 						Type in a Tumblr blog name to see its posts!
 						<br>
-						<input type="text" class="input">
+						<input type="text" class="input" name="tumblrname">
 						<input class="btn" type="submit">
 					</form>
 				</div>
