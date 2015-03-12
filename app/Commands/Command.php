@@ -1,4 +1,4 @@
-<?php namespace App\Commands;
+<?php namespace Tumblet\Commands;
 
 abstract class Command {
 

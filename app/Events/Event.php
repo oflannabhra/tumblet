@@ -1,4 +1,4 @@
-<?php namespace App\Events;
+<?php namespace Tumblet\Events;
 
 abstract class Event {
 

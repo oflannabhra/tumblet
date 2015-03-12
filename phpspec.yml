@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: Tumblet
+        psr4_prefix: Tumblet
         src_path: app
