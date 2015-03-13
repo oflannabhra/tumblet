@@ -144,7 +144,11 @@ return [
 		'Tumblet\Providers\ConfigServiceProvider',
 		'Tumblet\Providers\EventServiceProvider',
 		'Tumblet\Providers\RouteServiceProvider',
+		'Tumblet\Providers\TumblrServiceProvider',
 
+		/*
+		 * Other Service Providers
+		 */
 	],
 
 	/*
