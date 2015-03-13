@@ -12,10 +12,14 @@ namespace Tumblet\Tumblet;
 class Tumblet
 {
     public $name;
-    
-    public function __construct ($name)
+    public $title;
+    public $postTotal;
+
+    public function __construct ($name, $title, $postTotal)
     {
         $this->name = $name;
-    }
+        $this->title = $title;
+        $this->postTotal = $postTotal;
 
+    }
 }
