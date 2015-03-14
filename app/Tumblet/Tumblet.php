@@ -14,6 +14,7 @@ class Tumblet
     public $name;
     public $title;
     public $postTotal;
+    public $postsPerPage = 10;
 
     public function __construct ($name, $title, $postTotal)
     {

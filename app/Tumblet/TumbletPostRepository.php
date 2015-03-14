@@ -25,7 +25,7 @@ class TumbletPostRepository {
     public function getPostsForTumbletAndPage (Tumblet $tumblet, $page)
     {
         $options = [
-          'limit' => '10',
+          'limit' => $tumblet->postsPerPage,
             'offset' => ($page-1)*10
         ];
 

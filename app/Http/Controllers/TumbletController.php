@@ -34,8 +34,9 @@ class TumbletController extends Controller {
         $tumblet = $this->tumbletRepository->getByName($tumblrName);
 		$posts = $this->tumbletPostRepository->getPostsForTumbletAndPage($tumblet, $currentPage);
 
-
-        $paginator = new Paginator(range(1, $tumblet->postTotal), $tumblet->postTotal, 10, $currentPage);
+        // since our collection of posts only contains the visible posts,
+        // lets paginate based on the tumblet's attributes instead
+        $paginator = new Paginator(range(1, $tumblet->postTotal), $tumblet->postTotal, $tumblet->postsPerPage, $currentPage);
 
         $paginator->setPath("");
 		return View::make('tumblet.show')
