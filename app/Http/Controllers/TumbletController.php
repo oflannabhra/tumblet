@@ -37,7 +37,9 @@ class TumbletController extends Controller {
 
         $currentPage = Input::get('page');
 
-        dd($currentPage);
+        if(is_null($currentPage)) {
+            $currentPage = "1";
+        }
 
         try {
             $tumblet = $this->tumbletRepository->getByName($tumblrName);
