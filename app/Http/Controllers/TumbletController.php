@@ -1,5 +1,6 @@
 <?php namespace Tumblet\Http\Controllers;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Tumblet\Http\Requests;
 use Tumblet\Http\Controllers\Controller;
@@ -26,22 +27,42 @@ class TumbletController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function show($tumblrName, $pageNum)
+	public function show($tumblrName, $currentPage)
 	{
 		$tumblet = $this->tumbletRepository->getByName($tumblrName);
-		$posts = $this->tumbletPostRepository->getPostsForTumbletAndPage($tumblet, $pageNum);
+		$posts = $this->tumbletPostRepository->getPostsForTumbletAndPage($tumblet, $currentPage);
+
+		$numPages = ceil($tumblet->postTotal / 10);
 
 		return View::make('tumblet.show')
 			->with('tumblet', $tumblet)
-			->with('posts', $posts);
+			->with('posts', $posts)
+			->with('numPages', $numPages)
+			->with('currentPage', $currentPage)
+			->with('pages', $this->getPagination($numPages, $currentPage));
 	}
 	
 	public function storeAndRedirect ()
 	{
 		$tumblrname = Input::get('tumblrname');
 
-		return Redirect::to("{$tumblrname}/{$pageNum}");
+		return Redirect::to("{$tumblrname}/1");
 	}
-	
+
+	protected function getPagination ($totalPages, $currentPage)
+	{
+	    $previousPage = $currentPage - 1;
+		$nextPage = $currentPage + 1;
+		$centeredPageList = range($currentPage-4, $currentPage+4);
+
+		$prePages = [];
+		$postPages = [];
+		$i = 0;
+		$j = $currentPage-10;
+
+		$distFrom0 = $currentPage;
+		$distFromEnd = $totalPages - $currentPage;
+		return array_merge(range(), array($currentPage), array_reverse($postPages));
+	}
 
 }
