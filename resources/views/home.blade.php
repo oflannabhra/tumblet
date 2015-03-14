@@ -12,8 +12,8 @@
                             <p class="instructions">
                                 Type in a Tumblr blog name to see its posts!
                             </p>
-                            <div class="form-group">
-                                <input type="text" class="form-control text-right" name="tumblrname"> .tumblr.com
+                            <div class="input-group">
+                                <input type="text" class="form-control text-right" name="tumblrname"><span class="input-group-addon">.tumblr.com</span>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

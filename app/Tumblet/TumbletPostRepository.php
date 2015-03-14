@@ -12,6 +12,8 @@ namespace Tumblet\Tumblet;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Tumblr\API\Client;
+use Tumblet\Exceptions\EmptyTumbletException;
+use Tumblet\Exceptions\PageOutOfRangeException;
 
 class TumbletPostRepository {
 
@@ -32,6 +34,12 @@ class TumbletPostRepository {
         $postsArray = $this->client->getBlogPosts($tumblet->name, $options)->posts;
         $posts= [];
 
+        if($tumblet->postTotal == 0) {
+            throw new EmptyTumbletException ($tumblet->name, 'Tumblr has no posts for this blog');
+        }elseif($page > ceil($tumblet->postTotal/$tumblet->postsPerPage) || $page < 1) {
+            throw new PageOutOfRangeException ($tumblet->name, $page);
+        }
+
         foreach ($postsArray as $postData) {
             array_push($posts, new Post(
                 $postData->id,
@@ -39,8 +47,8 @@ class TumbletPostRepository {
                 $postData->post_url
                 ));
         }
-        $posts = new Collection($posts);
-        return $posts;
+
+        return new Collection($posts);
     }
 
 }
