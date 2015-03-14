@@ -9,12 +9,18 @@
 namespace Tumblet\Tumblet;
 
 
+use Carbon\Carbon;
+
 class Post {
     public $id;
+
+    /**
+     * @var Carbon
+     */
     public $createdDate;
     public $link;
 
-    public function __construct ($id, $createdDate, $link)
+    public function __construct ($id, Carbon $createdDate, $link)
     {
         $this->id = $id;
         $this->createdDate = $createdDate;
