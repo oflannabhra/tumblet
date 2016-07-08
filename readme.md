@@ -7,4 +7,4 @@ create a `.env` file with `TUMBLR_API_KEY` set to a valid API Key for Tumblr
 #### Thoughts:
 Currently, no caching or persistence occurs. Rate limiting could become an issue. Plus, waiting for responses from the API has a negative impact on page load times. 
 
-This app is currently hosted at [Tumblet.org](http://tumblet.org) if you'd like to try it out!
+This app is currently hosted [here](http://tumblet.oflannabhra.com) if you'd like to try it out!
